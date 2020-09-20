@@ -2,4 +2,6 @@
 .project
 .settings/
 bin/
-src/SimpleArrayList.java
+pset-1-SD.iml
+out/
+.idea
