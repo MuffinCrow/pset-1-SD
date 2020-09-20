@@ -5,9 +5,11 @@ public class SimpleArrayList {
     boolean tfArg; //This holds a true or false value of true or false for anything that needs checking
     int nAnswer;
     String sAnswer;
+    boolean bAnswer;
     int lastIndex = -1;
     public SimpleArrayList(){
         simpleArray = new String[0];
+        int lastIndex = -1;
     }
     public SimpleArrayList(int initialCapacity){
         if(initialCapacity<0){
@@ -15,12 +17,13 @@ public class SimpleArrayList {
         } else {
             simpleArray = new String[initialCapacity];
         }
+        int lastIndex = -1;
     }
     public SimpleArrayList(List<String> list){
         listSize = list.size();
         simpleArray = new String[listSize];
         simpleArray = list.toArray(simpleArray);
-        lastIndex = listSize - 1;
+        int lastIndex = listSize - 1;
     }
     public void add(int index, String s){
 
@@ -68,16 +71,49 @@ public class SimpleArrayList {
         return nAnswer;
     }
     public boolean isEmpty(){
-
+        if(lastIndex<0){
+            bAnswer = true;
+        } else {
+            bAnswer = true;
+        }
+        return bAnswer;
     }
     public String remove(int index){
-
+        if(index>lastIndex || index<0){
+            throw new IndexOutOfBoundsException("Index is out of bounds for this array");
+        }
+        sAnswer = simpleArray[index];
+        for(int i=index; i<lastIndex; i++){
+            simpleArray[index] = simpleArray[i+1];
+        }
+        lastIndex--;
+        String[] tempArray = new String[lastIndex];
+        for(int i=0; i<=lastIndex; i++){
+            tempArray[i]=simpleArray[i];
+        }
+        return sAnswer;
     }
     public boolean remove(String s){
-
+        if(indexOf(s)<0){
+            bAnswer = false;
+        } else {
+            bAnswer = true;
+        }
+        int z = indexOf(s);
+        for(int i=z; i<lastIndex; i++){
+            simpleArray[z] = simpleArray[i+1];
+        }
+        lastIndex--;
+        String[] tempArray = new String[lastIndex];
+        for(int i=0; i<=lastIndex; i++){
+            tempArray[i]=simpleArray[i];
+        }
+        return bAnswer;
     }
     public String set(int index, String s){
-
+        if(index<0 || index>lastIndex){
+            throw new IndexOutOfBoundsException("Index is out of bounds for this array");
+        }
     }
     public int size(){
 
