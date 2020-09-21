@@ -92,9 +92,7 @@ public class SimpleArrayList {
     }
     public boolean remove(String s){
         if(indexOf(s)==-1){
-            bAnswer = false;
-        } else {
-            bAnswer = true;
+            return false;
         }
         int index = indexOf(s);
         for(int i=index+1; i<lastIndex+1; i++){
@@ -106,7 +104,7 @@ public class SimpleArrayList {
         //}
         //simpleArray = tempArray;
         lastIndex--;
-        return bAnswer;
+        return true;
     }
     public String remove(int index){
         if(index>lastIndex || index<0){
